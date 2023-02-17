@@ -1,10 +1,11 @@
-import React, { useState } from "react";
-import "./QuickBooking.scss";
+import React, { useState } from 'react';
+import './QuickBooking.scss';
+const Typography = React.lazy(() => import('components/Typography'));
 
 const QuickBooking = () => {
-  const [movie, setMovie] = useState("1");
-  const [date, setDate] = useState("01/02/2022");
-  const [time, setTime] = useState("10 Am");
+  const [movie, setMovie] = useState('1');
+  const [date, setDate] = useState('01/02/2022');
+  const [time, setTime] = useState('10 Am');
 
   const bookMovie = () => {
     const booking = {
@@ -17,7 +18,11 @@ const QuickBooking = () => {
 
   return (
     <div className="quick-booking-container">
-      <span className="header">Quick Booking </span>
+      {/* <span className="header">Quick Booking </span> */}
+      <React.Suspense fallback={<span className="header">Quick Booking </span>}>
+        <Typography type="title" text="Quick Booking" />
+      </React.Suspense>
+
       <div className="spacer"></div>
       <div className="mr-1">
         <span>Select Movie</span>
